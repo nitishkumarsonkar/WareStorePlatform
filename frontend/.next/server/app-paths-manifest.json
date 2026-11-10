@@ -1,0 +1,6 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/builder/projects/page": "app/builder/projects/page.js",
+  "/builder/wizard/page": "app/builder/wizard/page.js",
+  "/page": "app/page.js"
+}
