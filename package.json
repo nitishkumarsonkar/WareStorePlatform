@@ -1,0 +1,23 @@
+{
+  "name": "ware-store-platform",
+  "version": "1.0.0",
+  "description": "Ware Store - Where Trust Builds B2B Construction Marketplace",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "build:backend": "cd backend && npm run build",
+    "build:frontend": "cd frontend && npm run build",
+    "seed": "cd backend && npm run seed",
+    "test:spatial": "cd backend && npm run test:spatial",
+    "test:api": "cd backend && npm run test:api"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
