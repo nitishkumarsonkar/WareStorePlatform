@@ -1,5 +1,6 @@
 import { pool } from '../../config/db';
-import { validatePan, validateGstin, isValidCoordinate } from '../../utils/validators';
+import { validatePan, validateGstin } from '../../utils/validators';
+import { isValidCoordinate } from '../../utils/geo';
 
 export interface BuilderKycParams {
   userId: string;
@@ -37,7 +38,7 @@ export class KycService {
     if (!addressText?.trim()) {
       throw new Error('Project/site address is required.');
     }
-    if (typeof latitude !== 'number' || typeof longitude !== 'number' || isNaN(latitude) || isNaN(longitude)) {
+    if (!isValidCoordinate(latitude, longitude)) {
       throw new Error('Valid geographic coordinates (latitude and longitude) are required.');
     }
 
@@ -156,7 +157,7 @@ export class KycService {
     if (!addressText?.trim()) {
       throw new Error('Warehouse/Depot physical address is required.');
     }
-    if (typeof latitude !== 'number' || typeof longitude !== 'number' || isNaN(latitude) || isNaN(longitude)) {
+    if (!isValidCoordinate(latitude, longitude)) {
       throw new Error('Valid geographic coordinates (latitude and longitude) are required.');
     }
     if (!Array.isArray(catalogCategories) || catalogCategories.length === 0) {
